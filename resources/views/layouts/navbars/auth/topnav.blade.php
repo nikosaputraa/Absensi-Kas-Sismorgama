@@ -19,7 +19,7 @@
                 <li class="nav-item d-flex align-items-center">
                         <a href="{{ route('profile') }}" class="nav-link text-white font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">{{ auth()->user()->firstname ?? 'Firstname' }} {{ auth()->user()->lastname ?? 'Lastname' }}</span>
+                            <span class="d-sm-inline d-none">{{ auth()->user()->username ?? 'Username' }}</span>
                         </a>
                 </li>
             </ul>
