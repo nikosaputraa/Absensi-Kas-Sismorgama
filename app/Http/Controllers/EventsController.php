@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EventsController extends Controller
 {
@@ -78,10 +79,7 @@ class EventsController extends Controller
 
         $event->save();
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Save data successfully'
-        ]);
+        return redirect('events')->with(['success' => 'Data berhasil ditambahkan!']);
     }
 
     /**
@@ -90,9 +88,6 @@ class EventsController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Delete data successfully'
-        ]);
+        return redirect('events')->with(['success' => 'Data berhasil dihapus!']);
     }
 }

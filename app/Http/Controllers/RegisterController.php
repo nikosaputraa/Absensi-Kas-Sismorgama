@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -20,9 +21,13 @@ class RegisterController extends Controller
             'password' => 'required|min:5|max:255',
             'terms' => 'required'
         ]);
+    
+        $attributes['remember_token'] = Str::random(60);
+    
         $user = User::create($attributes);
         auth()->login($user);
-
+    
         return redirect('/dashboard');
     }
+    
 }

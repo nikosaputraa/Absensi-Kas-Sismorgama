@@ -8,6 +8,21 @@
 <div class="container-fluid py-3">
     <div class="row">
         <div class="col-md-12">
+            @if(session('success'))
+            <div id="success-alert" class="alert alert-success alert-dismissible fade show text-white" role="alert">
+                <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                <span class="alert-text"><strong>{{ session('success') }}</strong></span>
+                <button type="button" class="btn-close pt-3" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" class="text-white">&times;</span>
+                </button>
+            </div>
+            <script>
+            // Membuat fungsi untuk menyembunyikan alert setelah 2 detik
+            setTimeout(function() {
+                document.getElementById('success-alert').style.display = 'none';
+            }, 2000);
+            </script>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div id="calendar"></div>
@@ -22,7 +37,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
     integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap5@6.1.7/index.global.min.js'></script>
@@ -125,9 +140,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     accept: 'application/json'
                 },
                 success: function(res) {
-                    iziToast.success({
+                    Swal.fire({
                         title: 'Success',
-                        message: res.message,
+                        text: 'Data berhasil diperbarui!',
                         position: 'topRight'
                     });
                 },
@@ -161,9 +176,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     accept: 'application/json'
                 },
                 success: function(res) {
-                    iziToast.success({
+                    Swal.fire({
                         title: 'Success',
-                        message: res.message,
+                        text: 'Data berhasil diperbarui!',
                         position: 'topRight'
                     });
                 },

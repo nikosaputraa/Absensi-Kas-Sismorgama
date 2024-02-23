@@ -104,8 +104,9 @@ class AbsensiController extends Controller
 
     public function detailAbsen($id_sesi)
     {
+        $data = Sesi::find($id_sesi);
         $dataPresensi = Absensi::where('id_sesi', $id_sesi)->get();
 
-        return view('pages.absen.detail-absen', compact('dataPresensi'));
+        return view('pages.absen.detail-absen', compact('data', 'dataPresensi'));
     }
 }
